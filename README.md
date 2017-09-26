@@ -17,8 +17,8 @@ an article is read.
 
 ## Contributors
 
-Nick Bailey
-Graham Hair
+ * Nick Bailey
+ * Graham Hair
 
 (use given-name at n-ism dot org to email, or contact us
 through github)
