@@ -1,0 +1,11 @@
+*.aux
+*.log
+*.out
+*.pdf
+*.xwm
+
+*.backup
+*~
+
+*.bfproject
+

@@ -1,0 +1,234 @@
+/* Responsive style sheet for SMR web site */
+/* Nick Bailey (nick at n-ism dot org), 25 Sep 2017 */
+
+* {
+    box-sizing: border-box;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+[class*="col-"] {
+    float: right;
+    padding: 15px;
+}
+
+/* small screens have columns which are always full screen width */
+[class*="col-"] { width: 100%;}
+/* Div-specific Styles */
+#heading {
+	text-align: center;
+	font-size: 18pt;
+}
+#footer {
+	text-align: center;
+	font-size: 12pt;
+}
+#search {
+	margin: 0;
+	padding-left: 0;
+}
+#searchForm {
+	background: #fff0e0;
+	padding: 4px;
+}
+
+
+
+/* Bibliographic entries */
+
+.firstauthor .surname {
+	font-variant: small-caps;
+}
+.title {
+	font-style: italic;
+}
+.hit {
+	color: red;
+	text-decoration: underline overline;
+}
+a.pdflink {
+	text-decoration: none;
+}
+a.pdflink::after {
+	content: "⤯";
+}
+div.newVol {
+	margin-left: -1em;
+	padding-left: 1em;
+	background: #90ff90;	
+}
+
+/* Search and volume selection form */
+#searchForm div { 
+	display: inline-block;
+	vertical-align: middle;
+	width: 45%;
+}
+#searchForm label {
+	font-size: 90%;
+	float: left;
+	width: 40%;
+	text-align: right;
+	padding-right: 5%;
+	display: block;
+}
+
+/* The following change in the desktop layout */
+#searchForm input {width: 55%;}
+#searchButton, #clearButton, #author, #title, #searchForm label {margin-top: 3px;}
+
+
+/* Displayed Article Links */
+
+#articleLinks ul {
+	list-style-type: none;
+	margin: 0;
+	margin-bottom: 3mm;
+	padding: 0;
+}
+
+/* Tooltip appearance */
+
+.tooltip {
+	position: relative;
+}
+.tooltip::before {
+    content: attr(tooltip) ;   
+    
+    font-family: serif;
+    font-size: 12px;
+    position:absolute;
+    z-index: 999;
+    white-space:nowrap;
+    bottom:9999px;
+    left: 50%;
+    background:#000;
+    color:#f0f0e0;
+    padding:0px 7px;
+    line-height: 24px;
+    height: 24px;
+    border-radius: 6px;
+ 
+    opacity: 0;  
+    transition: opacity 0.4s ease-out;
+    transition-delay: 1.5s;
+}     
+.tooltip:hover::before {
+    opacity: 1;
+    bottom:-35px;
+}
+
+/* Popups for citations */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #ccc;
+  border-radius: 5px;
+  width: 60%;
+  position: relative;
+  transition: all 5s ease-in-out;
+  margin-top: 22px;
+  color: #333;
+  font-family: sans-serif;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+.popbutton {
+  display: inline-block;
+  padding: 1px;
+  margin-right: 3px;
+  margin-left: -1em;
+  color: black;
+  border: 2px solid #06D85F;
+  border-radius: 2px/5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.popbutton:hover {
+  background: #06D85F;
+}
+.popbox {
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 3px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+/* For desktop: */
+@media only screen and (min-width: 700px) {
+	.col-1 {width: 8.33%;}
+	.col-2 {width: 16.66%;}
+	.col-3 {width: 25%;}
+	.col-4 {width: 33.33%;}
+	.col-5 {width: 41.66%;}
+	.col-6 {width: 50%;}
+	.col-7 {width: 58.33%;}
+	.col-8 {width: 66.66%;}
+	.col-9 {width: 75%;}
+	.col-10 {width: 83.33%;}
+	.col-11 {width: 91.66%;}
+	.col-12 {width: 100%;}
+	#heading {
+		font-size: 24pt;
+	}
+	#footer {
+		text-align: center;
+		font-size: 16pt;
+	}
+	#volumeSelector {
+		font-size: 66%;
+	}
+	#searchForm div {
+		display: block;
+		width: 100%;
+	}
+	#searchForm input { width: 60%; }
+	#title { margin-top: 0; }
+	#titleLabel:before {
+		content: "\a";
+		white-space: pre;
+	}
+	#articleLinks { order: 10; }
+	#search { order: 11; }
+}
+
+}

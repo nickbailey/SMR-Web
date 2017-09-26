@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<title>SMR Browsing Page</title>
+<link rel="stylesheet" type="text/css" href="css/smr.css">
+</head>
+<script src="js/bibtexParseJs/bibtexParse.js"></script>
+<script src="js/httpGet.js"></script>
+<script src="js/latexToUnicode.js"></script>
+<script src="js/smrUtils.js"></script>
+<script>
+// The title of the SMR as it appears in bibtex citations
+var journalTitle = 'Scottish Music Review';
+
+// Place where PDFs get stored
+var docBase = 'http://place.where.pdfs.are';
+
+// Edit the numbers and titles of all the volumes offered in the search dialogue.
+//
+// The first entry will always be interpreted as "All".
+// The volumes will be presented in the order they appear in the list.
+// For each volume:
+//		The first item is the appearance in the pull-down menu;
+//    The second item is the year of publication used for the bibtex citation;
+//    The third item is the volume as stored in the bibtex citation;
+//		The fourth item is the number as stored in the bibtex citation (may be null).
+var volumes = [
+	['4(2): Composition in the Post-Truth Age', '2019', '4', '2'],
+	['4(1): Interdisciplinarity', '2014', '4', '1'],
+	['3: Cultural Politics, inter alia', '2013', '3', null],
+	['2(1): Popular and Reigious Music, et al', '2011', '2', '1'],
+	['1(1): From the Scottish Universities', '2007', '1', '1']
+]; 
+
+var bibliography;
+
+// Read the current bibliography asynchronously from the SMR server
+httpGet('bibliography.bib', bibliographyChanged);
+
+// Called when the AJAX request for the bibliography is complete.
+// The bibtex file will be parsed and the User Interface enabled.
+function bibliographyChanged(responsetext) {
+	var sf = document.getElementById('searchForm');
+	sf.disabled = true;
+
+	try {
+		bibliography=bibtexParse.toJSON(responsetext);
+	   doSearch();
+	} catch (e) {
+		alert('Error parsing bibliography:\n\n' + e);
+	}
+
+	sf.disabled = false;
+	console.log(bibliography);
+}
+
+function clearSearch() {
+	document.getElementById('author').value = '(any)';
+	document.getElementById('title').value = '(any)';
+}
+
+
+// Perform the search and set the result div's content
+// Because the search button is initially disabled,
+// the user can't invoke this before the bibliography is parsed.
+function doSearch() {
+	// Index 0 always means "Any volume"
+	var volumeSelected = document.getElementById('volumeSelector').selectedIndex;
+	var vol = 0, num = 0;
+	
+	if (volumeSelected > 0) {
+		vol = parseInt(volumes[volumeSelected-1][2]);
+		num = parseInt(volumes[volumeSelected-1][3]);
+	}
+	
+	document.getElementById('articleLinks').innerHTML = 
+		searchResults(bibliography,                             // Source bibliography
+		              volumes,                                  // Published volumes
+		              vol,                                      // Volume
+		              num,                                      // Number
+		              document.getElementById('author').value,  // Author
+		              document.getElementById('title').value);  // Title
+}
+
+</script>
+
+<body>
+<div id="heading">SMR Heading</div>
+<div id="navMenu">SMR Navigation Menu</div>
+<div id="pageContent" class="row">
+<div id="search" class="col-4">
+	<form>
+		<fieldset id="searchForm" disabled>
+			<select id="volumeSelector" onchange="doSearch();return false;"></select><br />
+			<div><label for="author" class="tooltip"
+			      tooltip="Show articles by... (blank or '(any)' for all)"
+			>Author:</label><input id="author" type="text" value="(any)"
+			                      onfocus="if (this.value=='(any)') this.value='';return false;"
+			                      onchange="doSearch();return false;"/></div>
+			<div><label for="title" class="tooltip"
+			       tooltip="Show titles containing... (blank or '(any)' for all)"
+			       id="titleLabel"
+			>Title:</label><input id="title" type="text" value="(any)"
+			                     onfocus="if (this.value=='(any)') this.value='';"
+			                     onchange="doSearch();return false;"/></div>
+			<button id="searchButton" onclick="doSearch();return false;">Search</button>
+			<button id="clearButton" onclick="clearSearch();return false;">Clear</button>
+		</fieldset>
+	</form>
+</div>
+<div id="articleLinks" class="col-8"></div>
+</div>
+<div id="footer">SMR Footer</div>
+</body>
+
+<script>
+initSearchForm('volumeSelector', volumes);
+</script>
+
+</html>
+
