@@ -70,8 +70,10 @@ function formatAuthorList (authors) {
 // If there is a match, return its year (2nd element)
 // If not, return 'Unpublished'
 function yearFromVolume(volChoices, vol, num=null) {
+	console.log("number="+num);
 	var idx = volChoices.findIndex( function(choice) {
-		return choice[2] == String(vol) && choice[3] == String(num);
+		return choice[2] == String(vol) &&
+		       (num === null || num > 0 || choice[3] == String(num));
 	});
 	
 	return idx >= 0 ? volChoices[idx][1] : 'Unpublished';
