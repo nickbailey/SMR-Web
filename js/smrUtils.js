@@ -73,7 +73,7 @@ function yearFromVolume(volChoices, vol, num=null) {
 	console.log("number="+num);
 	var idx = volChoices.findIndex( function(choice) {
 		return choice[2] == String(vol) &&
-		       (num === null || num > 0 || choice[3] == String(num));
+		       (num === null || num == 0 || choice[3] == String(num));
 	});
 	
 	return idx >= 0 ? volChoices[idx][1] : 'Unpublished';
