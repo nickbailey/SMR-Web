@@ -1,3 +1,4 @@
 [submodule "js/bibtexParseJs"]
 	path = js/bibtexParseJs
-	url = https://github.com/ORCID/bibtexParseJs
+	url = git@github.com:nickbailey/bibtexParseJs
+
