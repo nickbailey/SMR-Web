@@ -1,4 +1,4 @@
 [submodule "js/bibtexParseJs"]
 	path = js/bibtexParseJs
-	url = git@github.com:nickbailey/bibtexParseJs
+	url = https://github.com/nickbailey/bibtexParseJs
 
