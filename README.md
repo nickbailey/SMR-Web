@@ -4,6 +4,11 @@ This is a proposed framework for the Scottish
 Music Review (SMR)  website.
 The SMR is an open-access, refereed academic Journal.
 
+## Cloning
+
+This project has submodules. Clone it with
+``git clone --recursive https://github.com/nickbailey/SMR-Web``
+
 ## Motivation
 
 We provide a front page which immediately allows users to
