@@ -134,7 +134,8 @@ div#navMenu {
 }
 .tooltip .tooltiptext {
    visibility: hidden;
-   width: 120px;
+   width: 130px;
+   font-size: 80%;
    background-color: black;
    color: #fff;
    text-align: center;
