@@ -90,6 +90,9 @@ function doSearch() {
 <div id="heading">SMR Heading</div>
 <div id="navMenu">
 	<span class="navbutton"><a href="/" />Home</a></span>
+	<span class="navbutton"><a href="/about.html" />About</a></span>
+	<span class="navbutton"><a href="/board.html" />Board</a></span>
+	<span class="navbutton"><a href="/Submissions" />Submissions</a></span>
 </div>
 <div id="pageContent" class="row">
 <div id="search" class="col-4">
@@ -97,15 +100,12 @@ function doSearch() {
 		<fieldset id="searchForm" disabled>
 			<select id="volumeSelector" onchange="doSearch();return false;"></select><br />
 			<div><label for="author" class="tooltip"
-			      tooltip="Show articles by... (blank or '(any)' for all)"
-			>Author:</label><input id="author" type="text" value="(any)"
+  			><span class="tooltiptext">Articles by...</span>Author:</label><input id="author" type="text" value="(any)"
 			                      onfocus="if (this.value=='(any)') this.value='';return false;"
 			                      onchange="doSearch();return false;"/></div>
-			<div><label for="title" class="tooltip"
-			       tooltip="Show titles containing... (blank or '(any)' for all)"
-			       id="titleLabel"
-			>Title:</label><input id="title" type="text" value="(any)"
-			                     onfocus="if (this.value=='(any)') this.value='';"
+			<div id="titleDiv"><label for="title" class="tooltip"  
+			><span class="tooltiptext">Titles containing...</span>Titley:</label><input id="title" type="text" value="(any)"
+			                     onfocus="if (this.value=='(any)') this.value='';return false;"
 			                     onchange="doSearch();return false;"/></div>
 			<button id="searchButton" onclick="doSearch();return false;">Search</button>
 			<button id="clearButton" onclick="clearSearch();return false;">Clear</button>

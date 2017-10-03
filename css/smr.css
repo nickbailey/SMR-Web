@@ -20,6 +20,7 @@
 #heading {
 	text-align: center;
 	font-size: 18pt;
+	margin-bottom: 5px; /* (The nav bar has -ve margin for the curved buttons) */
 }
 #footer {
 	text-align: center;
@@ -65,25 +66,31 @@ div.newVol {
 div#navMenu {
 	background: #00a000;
 	width: 100%;
+	padding-left: 4px;
 }
 
-.navbutton {
+.navbutton a {
 	display: inline-block;
 	padding-left: 1em;
 	padding-right: 1em;
 	padding-top: 3px;
 	padding-bottom: 3px;
+	margin-top: -5px;
+	margin-bottom: -5px;
+   border-radius: 25px;
+   border: 2px solid #73AD21;
 	font-weight: bold;
 	color: white;
-}
-
-.navbutton a {
-	color: white;
+/*	background: #73AD21; */
 	text-decoration: none;
 }
-
 .navbutton a:hover {
 	color: yellow;
+	border-color: yellow;
+   transition: border-color 0.3s ease-out;
+}
+.navbutton a:active {
+	color: black;
 }
 
 /* Search and volume selection form */
@@ -98,13 +105,13 @@ div#navMenu {
 	width: 40%;
 	text-align: right;
 	padding-right: 5%;
-	display: block;
+	vertical-align: top;
+	display: inline-block;
 }
 
 /* The following change in the desktop layout */
 #searchForm input {width: 55%;}
 #searchButton, #clearButton, #author, #title, #searchForm label {margin-top: 3px;}
-
 
 /* Displayed Article Links */
 
@@ -117,35 +124,42 @@ div#navMenu {
 
 /* Tooltip appearance */
 
-.tooltip {
-	position: relative;
-}
-.tooltip::before {
-    content: attr(tooltip) ;   
-    
-    font-family: serif;
-    font-size: 12px;
-    position:absolute;
-    z-index: 999;
-    white-space:nowrap;
-    bottom:9999px;
-    left: 50%;
-    background:#000;
-    color:#f0f0e0;
-    padding:0px 7px;
-    line-height: 24px;
-    height: 24px;
-    border-radius: 6px;
- 
-    opacity: 0;  
-    transition: opacity 0.4s ease-out;
-    transition-delay: 1.5s;
-}     
 .tooltip:hover::before {
     opacity: 1;
     bottom:-35px;
 }
+.tooltip {
+   position: relative;
+   display: inline-block;
+}
+.tooltip .tooltiptext {
+   visibility: hidden;
+   width: 120px;
+   background-color: black;
+   color: #fff;
+   text-align: center;
+   border-radius: 6px;
+   padding: 5px 0;
+   position: absolute;
+   z-index: 1;
+   top: 150%;
+   left: 50%;
+   margin-left: -60px;
+}
 
+.tooltip .tooltiptext::after {
+   content: "";
+   position: absolute;
+   bottom: 100%;
+   left: 50%;
+   margin-left: -5px;
+   border-width: 5px;
+   border-style: solid;
+   border-color: transparent transparent black transparent;
+}
+.tooltip:hover .tooltiptext {
+   visibility: visible;
+}
 /* Popups for citations */
 
 .overlay {
@@ -200,14 +214,14 @@ div#navMenu {
   margin-right: 3px;
   margin-left: -1em;
   color: black;
-  border: 2px solid #06D85F;
+  border: 2px solid #73AD21;
   border-radius: 2px/5px;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease-out;
 }
 .popbutton:hover {
-  background: #06D85F;
+  background: #73AD21;
 }
 .popbox {
   margin: 0 auto;
@@ -220,7 +234,7 @@ div#navMenu {
 }
 
 /* For desktop: */
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 640px) {
 	.col-1 {width: 8.33%;}
 	.col-2 {width: 16.66%;}
 	.col-3 {width: 25%;}
@@ -255,6 +269,20 @@ div#navMenu {
 	}
 	#articleLinks { order: 10; }
 	#search { order: 11; }
-}
-
+	/* Tooltips appear to the left on a big screen */
+   .tooltip .tooltiptext {
+      top: -5px;
+      left: auto;
+      right: 80%;
+   }
+   .tooltip .tooltiptext::after {
+   	content: "";
+   	position: absolute;
+    	bottom: auto;
+    	top: 50%;
+    	left: 100%;
+    	margin-left: 0;
+    	margin-top: -5px;
+      border-color: transparent transparent transparent black;
+    }
 }
