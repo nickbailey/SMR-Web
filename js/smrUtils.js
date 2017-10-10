@@ -22,7 +22,10 @@ function bibdataToURL(bibdata) {
 	var url = docBase + '/' + bibdata.volume;
 	if (typeof(bibdata.number) !== 'undefined')
 		url += '.' + bibdata.number;
-	url += '/' + bibdata.title.replace(/\//g,'-') + '.pdf';
+	var authors = bibdata['author'].split(' and ');
+	url += '/' + 
+		(authors.join(', ') + ': ' + bibdata.title).replace(/\//g,'-') +
+		'.pdf';
 	return encodeURI(url);
 }
 
