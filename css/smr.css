@@ -20,12 +20,21 @@
 #heading {
 	text-align: center;
 	font-size: 18pt;
-	margin-bottom: 5px; /* (The nav bar has -ve margin for the curved buttons) */
+	margin-bottom: 12px; /* (The nav bar has -ve margin for the curved buttons) */
 }
 #footer {
-	text-align: center;
+	padding-left: 4px;
+	text-align: left;
 	font-size: 12pt;
+	color: white;
+	background: #00a000;
 }
+#attribution {
+	padding: 2px;
+	color: white;
+	text-align: left;
+	font-size: 8pt;
+	float: right;}
 #search {
 	margin: 0;
 	padding-left: 0;
@@ -139,7 +148,9 @@ div#navMenu {
 	/* visibility: hidden; */
    opacity: 0;
    width: 130px;
-   font-size: 80%;
+   font-size: 10pt;
+   font-weight: normal;
+   font-family: sans-serif;
    background-color: black;
    color: #fff;
    text-align: center;
@@ -259,7 +270,6 @@ div#navMenu {
 		font-size: 24pt;
 	}
 	#footer {
-		text-align: center;
 		font-size: 16pt;
 	}
 	#volumeSelector {
@@ -278,12 +288,12 @@ div#navMenu {
 	#articleLinks { order: 10; }
 	#search { order: 11; }
 	/* Tooltips appear to the left on a big screen */
-   .tooltip .tooltiptext {
+   #searchForm .tooltip .tooltiptext {
       top: -5px;
       left: auto;
       right: 80%;
    }
-   .tooltip .tooltiptext::after {
+   #searchForm .tooltip .tooltiptext::after {
    	content: "";
    	position: absolute;
     	bottom: auto;

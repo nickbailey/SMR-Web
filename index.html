@@ -87,12 +87,15 @@ function doSearch() {
 </script>
 
 <body>
-<div id="heading">SMR Heading</div>
+<div id="heading">Scottish Music Review</div>
 <div id="navMenu">
 	<span class="navbutton"><a class="current" href="/" />Home</a></span>
 	<span class="navbutton"><a href="/about.html" />About</a></span>
-	<span class="navbutton"><a href="/board.html" />Board</a></span>
-	<span class="navbutton"><a href="/Submissions" />Submissions</a></span>
+	<span class="navbutton tooltip"><a href="/board.html" />
+	  <span class="tooltiptext">Contact SMR Executive</span>Board</a></span>
+	<span class="navbutton tooltip">
+		<span class="tooltiptext">Instructions for Authors</span>
+		<a href="/Submissions" />Submissions</a></span>
 </div>
 <div id="pageContent" class="row">
 <div id="search" class="col-4">
@@ -114,7 +117,10 @@ function doSearch() {
 </div>
 <div id="articleLinks" class="col-8"></div>
 </div>
-<div id="footer">SMR Footer</div>
+<div id="footer">
+	<div id="attribution">Web design by<br/>nick at n-ism.org</div>
+	&copy; SMR, 2017
+</div>
 </body>
 
 <script>
