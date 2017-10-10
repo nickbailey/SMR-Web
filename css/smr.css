@@ -22,6 +22,10 @@
 	font-size: 18pt;
 	margin-bottom: 12px; /* (The nav bar has -ve margin for the curved buttons) */
 }
+#pageContent {
+	margin: 12px 3px;
+	padding: 3px;
+}
 #footer {
 	padding-left: 4px;
 	text-align: left;
