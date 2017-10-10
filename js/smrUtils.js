@@ -23,8 +23,12 @@ function bibdataToURL(bibdata) {
 	if (typeof(bibdata.number) !== 'undefined')
 		url += '.' + bibdata.number;
 	var authors = bibdata['author'].split(' and ');
+	var surnames = [];
+	authors.forEach(function (author) {
+		surnames.push(latexToUnicode(author.replace(/,.*/, '')))
+	});
 	url += '/' + 
-		(authors.join(', ') + ': ' + bibdata.title).replace(/\//g,'-') +
+		(surnames.join(', ') + ': ' + bibdata.title).replace(/\//g,'-') +
 		'.pdf';
 	return encodeURI(url);
 }
@@ -73,7 +77,6 @@ function formatAuthorList (authors) {
 // If there is a match, return its year (2nd element)
 // If not, return 'Unpublished'
 function yearFromVolume(volChoices, vol, num=null) {
-	console.log("number="+num);
 	var idx = volChoices.findIndex( function(choice) {
 		return choice[2] == String(vol) &&
 		       (num === null || num == 0 || choice[3] == String(num));
