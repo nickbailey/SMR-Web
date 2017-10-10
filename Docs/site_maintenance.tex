@@ -246,4 +246,102 @@ generated points to an accessible, well-formed document.
 
 Since the solidus character (`/') is a directory separator,
 it is replaced by a minus-sign when the document's title contains it.
+
+\lstset{caption={Determination of linked URL from bibliographic data},label=l:bibToUrl}
+\begin{lstlisting}
+// Given the bibliographic data, generate the pdf document's escaped URI
+function bibdataToURL(bibdata) {
+	var url = docBase + '/' + bibdata.volume;
+	if (typeof(bibdata.number) !== 'undefined')
+		url += '.' + bibdata.number;
+	var authors = bibdata['author'].split(' and ');
+	var surnames = [];
+	authors.forEach(function (author) {
+		surnames.push(latexToUnicode(author.replace(/,.*/, '')))
+	});
+	url += '/' + 
+		(surnames.join(', ') + ': ' + bibdata.title).replace(/\//g,'-') +
+		'.pdf';
+	return encodeURI(url);
+}
+\end{lstlisting}
+
+The function responsible for calucating the URL from the bibliographic
+details is as shown in Listing~\ref{l:bibToUrl}. As it stands, this produces
+a URL containing the authors' surnames and title with spaces conserved.
+This is considered reasonable, even though the file names produced can be
+very long, because most clients select files using a pointing device
+rather than having to type the complete filename. For example,
+
+\begin{verbatim}
+author = {Wigham, Philip and Carola B{\"o}hm},
+title  = {BazerBows Instrument Design and Mimetic Theory},
+volume = 4,
+number = 1...
+\end{verbatim}
+
+produces the file path:
+
+\noindent
+\verb!4.1/Wigham, Böhm: BazerBows: Instrument Design and Mimetic Theory.pdf!
+
+\section{Adding a New Page}
+
+A file \verb!emptypage.html! is provided to ease the addition of new// Given the bibliographic data, generate the pdf document's escaped URI
+function bibdataToURL(bibdata) {
+	var url = docBase + '/' + bibdata.volume;
+	if (typeof(bibdata.number) !== 'undefined')
+		url += '.' + bibdata.number;
+	var authors = bibdata['author'].split(' and ');
+	var surnames = [];
+	authors.forEach(function (author) {
+		surnames.push(latexToUnicode(author.replace(/,.*/, '')))
+	});
+	url += '/' + 
+		(surnames.join(', ') + ': ' + bibdata.title).replace(/\//g,'-') +
+		'.pdf';
+	return encodeURI(url);
+}
+
+pages to the site. To remove the dependency on the server to provide
+particular language support, the supplied pages are simple copies of
+the empty page with the necessary changes having been made. These are:
+\lstset{caption={Determination of linked URL from bibliographic data},label=l:navmenu}
+\begin{lstlisting}
+<div id="navMenu">
+<!-- You have to add 'class="current"' to one navbutton's link -->
+	<span class="navbutton"><a href="." />Home</a></span>
+	<span class="navbutton"><a class="current" href="./about.html" />About</a></span>
+	<span class="navbutton tooltip"><a href="./board.html" />
+	  <span class="tooltiptext">Contact SMR Editorial Board</span>Board</a></span>
+	<span class="navbutton tooltip">
+		<span class="tooltiptext">Instructions for Authors</span>
+		<a href="./submissions.html" />Submissions</a></span>
+</div>
+\end{lstlisting}
+\begin{itemize}
+ \item Add the page title to the HTML <title> element.
+ \item Replace the main heading in the HTML <h1> element.
+ \item Assert the current page in the navigation menu. Looking at Listing~\ref{l:navmenu},
+ which shows the relevant part of the file \texttt{about.html}. The ``about'' button's
+ link element. It has a class attribute declaring it to be of class ``current''
+ whereas the others do not.
+ \item Add the page content to the <div> element with the id attribute ``pageContent''.
+ On the desktop, the page is divided into 12 columns. The width of a <div> can
+ be specified as a multiple of these columns. When viewed on a small screen
+ device, the <divs> will always appear vertically stacked.
+ \item To change the web site copyright year, modify the \texttt{css/smr.css} file.
+ The year copyright year will then appear modified on every page of the site.
+\end{itemize}
+
+\begin{figure}
+ \begin{center}
+  \includegraphics[width=0.8\textwidth]{navbar.png}
+ \end{center}
+ \caption{The main page integrated into the navigation menu}
+ \label{f:navbar}
+\end{figure}
+
+This should result in a desktop screen with the appearance shown in
+Figure~\ref{f:navbar}.
 \end{document}

@@ -40,7 +40,7 @@
 	padding: 2px;
 	color: white;
 	text-align: left;
-	font-size: 8pt;
+	font-size: 5pt;
 	float: right;}
 #search {
 	margin: 0;
@@ -73,8 +73,13 @@ a.pdflink::after {
 }
 div.newVol {
 	margin-left: -1em;
+	margin-bottom: 2px;
+	margin-top: 6px;
 	padding-left: 1em;
-	background: #90ff90;	
+	padding-top:  2px;
+	border-bottom: 3px solid #103000;
+	background: #40a000;
+	color: white;
 }
 
 /* Naviagation Buttons */
@@ -89,12 +94,13 @@ div#navMenu {
 	display: inline-block;
 	padding-left: 1em;
 	padding-right: 1em;
-	padding-top: 3px;
+	padding-top: 4px;
 	padding-bottom: 3px;
 	margin-top: -5px;
 	margin-bottom: -5px;
-   border-radius: 25px;
+   border-radius: 12px;
    border: 2px solid #73AD21;
+   font-size: 10pt;
 	font-weight: bold;
 	color: white;
 /*	background: #73AD21; */
@@ -276,6 +282,14 @@ div#navMenu {
 	#heading {
 		font-size: 24pt;
 	}
+	.navbutton a {
+		padding-top: 3px;
+		padding-bottom: 3px;
+		margin-top: -5px;
+		margin-bottom: -5px;
+	   border-radius: 20px;
+	   font-size: 12pt;
+	}
 	#footer {
 		font-size: 16pt;
 	}
@@ -292,6 +306,7 @@ div#navMenu {
 		content: "\a";
 		white-space: pre;
 	}
+	#attribution { font-size: 8pt; }
 	#articleLinks { order: 10; }
 	#search { order: 11; }
 	/* Tooltips appear to the left on a big screen */
