@@ -29,6 +29,9 @@
 	color: white;
 	background: #00a000;
 }
+#webCopyright::after {
+	content: ", 2017";
+}
 #attribution {
 	padding: 2px;
 	color: white;
