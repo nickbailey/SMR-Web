@@ -84,6 +84,9 @@ div#navMenu {
 /*	background: #73AD21; */
 	text-decoration: none;
 }
+.navbutton a.current {
+	border-color: #FFAD00;
+}
 .navbutton a:hover {
 	color: yellow;
 	border-color: yellow;
@@ -133,7 +136,8 @@ div#navMenu {
    display: inline-block;
 }
 .tooltip .tooltiptext {
-   visibility: hidden;
+	/* visibility: hidden; */
+   opacity: 0;
    width: 130px;
    font-size: 80%;
    background-color: black;
@@ -146,6 +150,8 @@ div#navMenu {
    top: 150%;
    left: 50%;
    margin-left: -60px;
+   transition:  0.3s ease-in-out;
+   transition-delay: 0.5s;
 }
 
 .tooltip .tooltiptext::after {
@@ -159,7 +165,8 @@ div#navMenu {
    border-color: transparent transparent black transparent;
 }
 .tooltip:hover .tooltiptext {
-   visibility: visible;
+   /* visibility: visible; */
+   opacity: 0.85;
 }
 /* Popups for citations */
 
