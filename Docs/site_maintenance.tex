@@ -266,7 +266,7 @@ function bibdataToURL(bibdata) {
 }
 \end{lstlisting}
 
-The function responsible for calucating the URL from the bibliographic
+The function responsible for calculating the URL from the bibliographic
 details is as shown in Listing~\ref{l:bibToUrl}. As it stands, this produces
 a URL containing the authors' surnames and title with spaces conserved.
 This is considered reasonable, even though the file names produced can be
@@ -305,7 +305,8 @@ function bibdataToURL(bibdata) {
 
 pages to the site. To remove the dependency on the server to provide
 particular language support, the supplied pages are simple copies of
-the empty page with the necessary changes having been made. These are:
+the empty page with the necessary changes having been made.
+The REQUIRED changes are:
 \lstset{caption={Determination of linked URL from bibliographic data},label=l:navmenu}
 \begin{lstlisting}
 <div id="navMenu">
