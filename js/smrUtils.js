@@ -22,13 +22,14 @@ function bibdataToURL(bibdata) {
 	var url = docBase + '/' + bibdata.volume;
 	if (typeof(bibdata.number) !== 'undefined')
 		url += '.' + bibdata.number;
-	var authors = bibdata['author'].split(' and ');
+	var authors = bibdata['author'].split(/\s+and\s+/);
 	var surnames = [];
 	authors.forEach(function (author) {
-		surnames.push(latexToUnicode(author.replace(/,.*/, '')))
+		surnames.push(latexToUnicode(author.replace(/,.*/g, '').replace(/\s+/g,' ')));
 	});
-	url += '/' + 
-		(surnames.join(', ') + ': ' + bibdata.title).replace(/\//g,'-') +
+	url += '/' +
+		surnames.join(', ') + ': ' +
+		bibdata['title'].replace(/\s+/g,' ').replace(/\//g,'-') +
 		'.pdf';
 	return encodeURI(url);
 }
