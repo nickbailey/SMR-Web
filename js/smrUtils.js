@@ -19,19 +19,18 @@ function initSearchForm (selectorID, volChoices) {
 
 // Given the bibliographic data, generate the pdf document's escaped URI
 function bibdataToURL(bibdata) {
-	var url = docBase + '/' + bibdata.volume;
+	var path = docBase + '/' + bibdata.volume;
 	if (typeof(bibdata.number) !== 'undefined')
-		url += '.' + bibdata.number;
+		path += '.' + bibdata.number;
 	var authors = bibdata['author'].split(/\s+and\s+/);
 	var surnames = [];
 	authors.forEach(function (author) {
-		surnames.push(latexToUnicode(author.replace(/,.*/g, '').replace(/\s+/g,' ')));
+		surnames.push(author.replace(/,.*/g, '').replace(/\s+/g,' '));
 	});
-	url += '/' +
-		surnames.join(', ') + ': ' +
+	var file = surnames.join(', ') + ': ' +
 		bibdata['title'].replace(/\s+/g,' ').replace(/\//g,'-') +
 		'.pdf';
-	return encodeURI(url);
+	return path + '/' + encodeURIComponent(file);
 }
 
 // Convert a bibitem to a BibTeX Citation
@@ -160,7 +159,7 @@ function searchResults(bibliography, volChoices,
 				html += '<li></a><a class="popbutton" href="#popup' + popup +'">Cite</a>';
 				html += '<span class="authors">' + formatAuthorList(itemAuthor) + '</span>\n';
 				
-				html += '<a href="' + itemURL + '" class="pdflink">';							
+				html += '<a href="' + itemURL + '" class="pdflink" target="SMR">';							
 				var itemTitle = latexToUnicode(bibdata.title);
 				var rt = RegExp(title, 'gi');
 				if (required(title)) itemTitle = bibdata['title'].replace(rt, '<span class="hit">$&</span>');

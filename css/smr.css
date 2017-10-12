@@ -315,6 +315,10 @@ div#navMenu {
       left: auto;
       right: 80%;
    }
+   /* Navigation tooltips wider on the big screen */
+   #navMenu .tooltip .tooltiptext {
+   	width: 220px;
+   }
    #searchForm .tooltip .tooltiptext::after {
    	content: "";
    	position: absolute;
