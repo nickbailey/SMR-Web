@@ -318,6 +318,7 @@ div#navMenu {
    /* Navigation tooltips wider on the big screen */
    #navMenu .tooltip .tooltiptext {
    	width: 220px;
+   	margin-left: -110px;
    }
    #searchForm .tooltip .tooltiptext::after {
    	content: "";
