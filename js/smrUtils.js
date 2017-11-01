@@ -43,7 +43,7 @@ function bibitemToCitation(item, volChoices, url=null) {
 	                                        item.entryTags['volume'],
 	                                        number);
 	if (url !== null) item.entryTags['url'] = url;
-	return bibtexParse.toBibtex([item]);
+	return bibtexParse.toBibtex([item], false);
 }
 
 // Normal format is to have the first author family name first,
