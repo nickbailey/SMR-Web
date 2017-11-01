@@ -42,7 +42,10 @@ function bibitemToCitation(item, volChoices, url=null) {
 	item.entryTags['year'] = yearFromVolume(volChoices,
 	                                        item.entryTags['volume'],
 	                                        number);
-	if (url !== null) item.entryTags['url'] = url;
+	if (url !== null) // Fix relative URLs
+		item.entryTags['url'] = url.replace(/^\.\//,
+		                                    window.location.href.replace(/[^/]*$/, ''));
+	console.log(item.entryTags['url']);
 	return bibtexParse.toBibtex([item], false);
 }
 
