@@ -65,11 +65,14 @@
 	color: red;
 	text-decoration: underline overline;
 }
-a.pdflink {
+a.pdflink,a.offsite {
 	text-decoration: none;
 }
 a.pdflink::after {
 	content: "⤯";
+}
+a.offsite::before {
+	content: "⤤";
 }
 div.newVol {
 	margin-left: -1em;
@@ -145,6 +148,22 @@ div#navMenu {
 	margin: 0;
 	margin-bottom: 3mm;
 	padding: 0;
+}
+
+/* Formatting for Board Members */
+div.boardmember {
+	margin-left: 1em;
+	margin-bottom: 2ex;
+}
+div.boardmember .position {
+	font-size: 140%;
+}
+div.boardmember .name {
+	font-weight: bold;
+}
+div.boardmember .smail {
+}
+div.boardmember .email {
 }
 
 /* Tooltip appearance */
