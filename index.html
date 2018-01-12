@@ -5,12 +5,11 @@
 <meta charset="utf-8">
 <title>SMR Browsing Page</title>
 <link rel="stylesheet" type="text/css" href="css/smr.css">
-</head>
-<script src="js/bibtexParseJs/bibtexParse.js"></script>
-<script src="js/httpGet.js"></script>
-<script src="js/latexToUnicode.js"></script>
-<script src="js/smrUtils.js"></script>
-<script>
+<script src="js/bibtexParseJs/bibtexParse.js" type="text/javascript"></script>
+<script src="js/httpGet.js" type="text/javascript"></script>
+<script src="js/latexToUnicode.js" type="text/javascript"></script>
+<script src="js/smrUtils.js" type="text/javascript"></script>
+<script type="text/javascript">
 // The title of the SMR as it appears in bibtex citations
 var journalTitle = 'Scottish Music Review';
 
@@ -84,17 +83,18 @@ function doSearch() {
 }
 
 </script>
+</head>
 
 <body>
 <div id="heading">Scottish Music Review</div>
 <div id="navMenu">
-	<span class="navbutton"><a class="current" href="." />Home</a></span>
-	<span class="navbutton"><a href="./about.html" />About</a></span>
-	<span class="navbutton tooltip"><a href="./board.html" />
+	<span class="navbutton"><a class="current" href=".">Home</a></span>
+	<span class="navbutton"><a href="./about.html">About</a></span>
+	<span class="navbutton tooltip"><a href="./board.html">
 	  <span class="tooltiptext">Contact SMR Executive</span>Board</a></span>
 	<span class="navbutton tooltip">
 		<span class="tooltiptext">Instructions for Authors</span>
-		<a href="./submissions.html" />Submissions</a></span>
+		<a href="./submissions.html" >Submissions</a></span>
 </div>
 <div id="pageContent" class="row">
 <div id="search" class="col-4">
@@ -121,11 +121,11 @@ function doSearch() {
 	<div id="webCopyright">&copy; SMR</div> <!-- year is set in css -->
 </div>
 <br clear="both"/>
-</body>
 
-<script>
+<script type="text/javascript">
 initSearchForm('volumeSelector', volumes);
 </script>
 
+</body>
 </html>
 
