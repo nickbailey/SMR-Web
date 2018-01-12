@@ -34,7 +34,8 @@ function bibdataToURL(bibdata) {
 }
 
 // Convert a bibitem to a BibTeX Citation
-function bibitemToCitation(item, volChoices, url=null) {
+function bibitemToCitation(item, volChoices, url) {
+        if (url === undefined) url = null;
 	item.entryTags['journal'] = journalTitle;
 	var number = typeof(item.entryTags['number']) == 'undefined' ?
 	               null :
@@ -79,7 +80,8 @@ function formatAuthorList (authors) {
 // Find a list of matching volumes/numbers.
 // If there is a match, return its year (2nd element)
 // If not, return 'Unpublished'
-function yearFromVolume(volChoices, vol, num=null) {
+function yearFromVolume(volChoices, vol, num) {
+        if (num === undefined) num = null;
 	var idx = volChoices.findIndex( function(choice) {
 		return choice[2] == String(vol) &&
 		       (num === null || num == 0 || choice[3] == String(num));
