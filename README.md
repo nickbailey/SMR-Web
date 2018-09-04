@@ -24,6 +24,7 @@ an article is read.
 
  * Nick Bailey
  * Graham Hair
+ * Keziah Milligan
 
 (use given-name at n-ism dot org to email, or contact us
 through github)
